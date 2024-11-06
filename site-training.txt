@@ -1,0 +1,670 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>EnFuse Website</title>
+
+
+    <style>
+
+        .about {
+            padding-left: 35px;
+            padding-right: 35px;
+        }
+
+        .card {
+            border: none;
+        }
+
+        .card-i1 {
+            width: 35%;
+        }
+
+        .container-tree img{
+        width: 100%;
+
+    }
+
+
+        .col .card{
+           border: none;
+       }
+
+
+       .container h1 {
+           font-weight: bold;
+           margin-bottom: 20px;
+           /* Adjusts space below the heading */
+       }
+
+       .container p {
+           font-size: 1.1em;
+           /* Adjusts paragraph font size */
+           line-height: 1.6;
+           /* Improves readability */
+       }
+
+
+
+
+       .slider-container {
+           margin-top: 20px;
+           position: relative;
+           width: 100%;
+           height: 500px;
+           overflow: hidden;
+           background-color: #f3f3f3;
+       }
+
+       .dot {
+           cursor: pointer;
+           height: 15px;
+           width: 15px;
+           margin: 0 2px;
+           background-color: #bbb;
+           border-radius: 50%;
+           display: inline-block;
+           transition: background-color 0.6s ease;
+       }
+
+
+
+       .prev,
+       .next {
+           cursor: pointer;
+           position: absolute;
+           top: 50%;
+           width: auto;
+           margin-top: -22px;
+           padding: 16px;
+           color: white;
+           font-weight: bold;
+           font-size: 18px;
+           transition: 0.6s ease;
+           border-radius: 0 3px 3px 0;
+           user-select: none;
+       }
+
+
+
+
+       .slide {
+           display: flex;
+           width: 100%;
+           height: 100%;
+           background-size: cover;
+           background-position: center;
+           text-align: center;
+           color: white;
+           font-size: 2em;
+           font-weight: bold;
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           text-align: center;
+       }
+
+       .slide h3 {
+
+           display: flex;
+           align-items: center;
+           justify-content: center;
+           text-align: center;
+           background: red;
+
+       }
+
+       .nav-button {
+           position: absolute;
+           top: 50%;
+           transform: translateY(-50%);
+           background-color: rgba(0, 0, 0, 0.5);
+           color: white;
+           border: none;
+           padding: 10px;
+           cursor: pointer;
+           font-size: 24px;
+           font-weight: bold;
+       }
+
+       .nav-button.left {
+           left: 20px;
+       }
+
+       .nav-button.right {
+           right: 20px;
+       }
+
+
+
+
+
+       .dropdown ul li a:hover {
+           color: aqua;
+           font-weight: bold;
+       }
+
+
+
+
+       .dropdown:hover .dropdown-menu {
+           display: block;
+       }
+
+       .navbar-collapse ul li a :hover {
+           color: aqua;
+           font-weight: bold;
+       }
+
+       .nav-button {
+           position: absolute;
+           top: 50%;
+           transform: translateY(-50%);
+           background-color: rgba(0, 0, 0, 0.5);
+           color: white;
+           border: none;
+           padding: 10px;
+           cursor: pointer;
+           font-size: 24px;
+           font-weight: bold;
+       }
+    </style>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+</head>
+
+<body>
+
+<script>
+
+
+    let slideIndex = 1;
+    showSlides(slideIndex);
+
+    // Next/previous controls
+    function plusSlides(n) {
+        showSlides(slideIndex += n);
+    }
+
+    // Thumbnail image controls
+    function currentSlide(n) {
+        showSlides(slideIndex = n);
+    }
+
+    function showSlides(n) {
+        let i;
+
+        console.log("method is calling....");
+        let slides = document.getElementsByClassName("slide");
+        let dots = document.getElementsByClassName("dot");
+        if (n > slides.length) { slideIndex = 1 }
+        if (n < 1) { slideIndex = slides.length }
+        for (i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        for (i = 0; i < dots.length; i++) {
+            dots[i].className = dots[i].className.replace(" active", "");
+        }
+        slides[slideIndex - 1].style.display = "block";
+        dots[slideIndex - 1].className += " active";
+    }
+
+
+</script>
+
+<div>
+
+    <nav style="border: none; background: gray" class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container-fluid">
+            <a class="mx-0 navbar-brand" href="#">
+                <img style="width: 150px" src="https://arun-bucket12.s3.ap-south-1.amazonaws.com/icon.PNG" />
+            </a>
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item mx-2">
+                        <a style="color: aqua" class="nav-link active" aria-current="page" href="#">
+                            <strong> HOME </strong>
+                        </a>
+                    </li>
+
+                    <li class="mx-2 nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="https://www.enfuse-solutions.com/about-us/"
+                           id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <strong> ABOUT </strong>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="https://www.enfuse-solutions.com/about-us/">
+                                    <strong> About Us </strong>
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="https://www.enfuse-solutions.com/leadership-team/">
+                                    <strong> LeaderShip Team </strong>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="mx-2 nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            <strong> SERVICES </strong>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="#">Tagging / AI & ML Enablement
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Proctoring Services</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">eCommerce Services</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Data & Analytics Services</a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="#">Managed Services/Outcomes</a>
+                            </li>
+                            <li><a class="dropdown-item" href="#">CRO</a></li>
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    Development and Integration Support
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="mx-2 nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
+                           data-bs-toggle="dropdown" aria-expanded="false">
+                            <strong> RESOURCES </strong>
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li>
+                                <a class="dropdown-item" href="#">
+                                    <strong> Case Studies </strong>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+
+                    <li class="mx-2 nav-item">
+                        <a class="nav-link" href="https://www.enfuse-solutions.com/investors/">
+                            <strong> INVESTORS </strong>
+                        </a>
+                    </li>
+
+                    <li class="mx-2 nav-item">
+                        <a class="nav-link" href="https://www.enfuse-solutions.com/blogs/">
+                            <strong> BLOGS </strong>
+                        </a>
+                    </li>
+
+                    <li class="mx-2 nav-item">
+                        <a class="nav-link" href="https://www.enfuse-solutions.com/careers/">
+                            <strong> CAREERS </strong>
+                        </a>
+                    </li>
+
+                    <!-- <li class="d-flex mx-2 nav-item">
+                  <button
+                    style="background: blue; border-radius: 15px; cursor: pointer; margin-left: 120px"
+                    class="nav-link primary"
+                    href="#"
+                    id="navbarDropdown"
+                    role="button"
+                    data-bs-toggle="dropdown"
+                    aria-expanded="false"
+                  >
+                    <span style="color: white;margin : 20px ; font-weight: bold">
+                      GET IN TOUCH
+                    </span>
+                  </button>
+
+                  </li> -->
+                </ul>
+
+                <a href="https://www.enfuse-solutions.com/contact-us/">
+                    <button class="btn btn-success" type="submit">
+                            <span style="margin: 20px; color: white; font-weight: bold">
+                                GET IN TOUCH
+                            </span>
+                    </button>
+                </a>
+            </div>
+        </div>
+    </nav>
+
+
+
+
+
+</div>
+
+
+
+
+<div class="slider-container">
+    <!-- Slide 1 -->
+    <div class="slide active" style="
+          background-image: url('https://arun-bucket12.s3.ap-south-1.amazonaws.com/Capture1.PNG');
+        "></div>
+    <!-- Slide 2 -->
+    <div class="slide active" style="
+          background-image: url('https://arun-bucket12.s3.ap-south-1.amazonaws.com/Capture2.PNG');
+        "></div>
+    <!-- Slide 3 -->
+    <div class="slide" style="
+          background-image: url('https://arun-bucket12.s3.ap-south-1.amazonaws.com/Capture3.PNG');
+        "></div>
+
+    <div class="slide" style="
+          background-image: url('https://arun-bucket12.s3.ap-south-1.amazonaws.com/Capture4.PNG');
+        "></div>
+
+    <!-- Navigation Buttons -->
+    <button onclick="plusSlides(-1)" class="prev nav-button left" id="prevBtn">&#8592;</button>
+    <button onclick="plusSlides(1)" class="next nav-button right" id="nextBtn">&#8594;</button>
+</div>
+
+
+<br />
+<br />
+
+
+<div style="text-align:center">
+    <span class="dot" onclick="currentSlide(1)"></span>
+    <span class="dot" onclick="currentSlide(2)"></span>
+    <span class="dot" onclick="currentSlide(3)"></span>
+    <span class="dot" onclick="currentSlide(4)"></span>
+</div>
+
+
+
+
+
+<div class="container text-center my-5">
+
+    <h1><strong> What Do We Do </strong> </h1>
+    <p class="text-center">We have a comprehensive understanding of the global market, which enables us to provide
+        significant value to your business through a broad range of digital services and integrated solutions. We
+        specialize in the following domains.</p>
+</div>
+
+
+
+<div class="container text-center">
+    <div class="row align-items-end">
+
+        <div class="col">
+
+            <div class="card" style="width: 18rem;">
+
+                <div class="card-body">
+                    <h4 class="card-title">   <strong> Data Management     </strong> </h4>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
+
+                        This includes acquisition ,stewardship , quality and governance across all data types.
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div class="col">
+
+            <div class="card" style="width: 18rem;">
+
+                <div class="card-body">
+                    <h4 class="card-title">    <strong>       Tagging & Annotation Services   </strong>     </h4>
+                    <p class="card-text">  We Offer professional & high quality tagging,annotation , transcription , and moderation services</p>
+
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</div>
+
+
+
+<div class="container-tree">
+
+
+    <img src="https://arun-bucket12.s3.ap-south-1.amazonaws.com/tree.PNG"/>
+
+
+
+</div>
+
+
+
+<div class="container">
+
+    <div class="row align-items-start">
+
+        <div class="col">
+
+            <div class="card" style="width: 28rem;">
+                <p style="color: aqua;"> <strong> ABOUT THE COMPANY </strong> </p>
+
+
+                <div class="card-body1">
+                    <h2 class="card-title">
+
+                        EnFuse offers customized solutions and domain expertise across multiple industries
+
+
+
+                    </h2>
+                    <p class="card-text">
+
+                        We provide integrated Digital Solutions to solve complex business challenges.
+                        </br> </br>
+
+                        Founded in 2017, EnFuse Solutions is a leading independent provider offering a full range of
+                        multi-disciplinary, outsourced, professional, and managed services giving our clients a
+                        competitive edge. We aim to transform businesses into truly digital enterprises.
+
+                    </p>
+
+                </div>
+            </div>
+
+
+            <div style="display: flex;" class="card-c1">
+
+
+                <div class="card my-4" style="width: 18rem;">
+                    <img src="https://arun-bucket12.s3.ap-south-1.amazonaws.com/i1.PNG" class="card-i1"
+                         alt="...">
+                    <div class="card-body">
+                        <h3 class="card-title">Global Experience</h3>
+                        <p class="card-text">
+                            We are a recognized name in the industry serving several Fortune 500 clients; with over
+                            500 employees in India, Europe, and North America.
+
+                        </p>
+                        <a href="#" class="my-4 btn btn-info about "> <span
+                                style="font-weight: bold; color: white; border-radius: 200px;"> ABOUT US </span></a>
+                    </div>
+                </div>
+
+
+
+
+                <div class="mx-3 card my-4" style="width: 18rem;">
+                    <img src="https://arun-bucket12.s3.ap-south-1.amazonaws.com/i3.PNG" class="card-i1"
+                         alt="...">
+                    <div class="card-body">
+                        <h3 class="card-title">Vast Experience</h3>
+                        <p class="card-text">
+
+                            We have a cumulative 450+ years of managerial experience in enterprise data management
+                            solutions and metrics-based project execution
+
+                        </p>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+        </div>
+
+
+
+
+
+        <div class="col">
+            <img style="width: 100%; height: 700px;" src="https://arun-bucket12.s3.ap-south-1.amazonaws.com/st.PNG" class="card-img-top"
+                 alt="...">
+        </div>
+
+
+    </div>
+
+
+</div>
+
+
+
+<div class="container text-center">
+
+    <div class="row align-items-start">
+
+        <div class="col">
+
+            <img style="width: 100%;" src="https://arun-bucket12.s3.ap-south-1.amazonaws.com/i5.PNG" />
+        </div>
+
+
+
+
+
+        <div class="col">
+
+
+            <div class="card" style="width: 35rem; border: none;display: inline-block; text-align: left;">
+
+                <div class="card-body">
+                    <h1 class="card-title">Why Choose EnFuse ? </h1>
+                    <p class="card-text">
+
+                        We have a comprehensive understanding of the global market, which enables us to provide
+                        significant value to businesses through a broad range of digital services and integrated
+                        solutions.
+
+                    </p>
+
+
+
+
+
+                </div>
+
+
+                <div class="card" style="width: 35rem;   display: inline-block; text-align: left; border: none;  ">
+
+                    <div class="card-body">
+
+                        <div style="display: flex; justify-content: space-between; margin-right: 70px; ">
+                            <h5 style="color: aqua;" class="card-title"> <strong> Domain & Tools Expertise </strong>
+                            </h5>
+
+
+
+                        </div>
+
+
+                        <p class="card-text" s>
+
+                            We offer customized solutions and domain expertise across multiple industries with our
+                            two-layered efficiency and automation framework.
+
+                            </br> </br>
+
+                            We ensure that business processes are strategically aligned with each client's business
+                            objectives and priorities.
+
+
+                        </p>
+
+
+
+                    </div>
+                </div>
+
+
+                <div class="card" style="width: 35rem;   display: inline-block; text-align: left; border: none;  ">
+
+                    <div class="card-body">
+                        <h5 style="color: aqua;" class="card-title"> <strong> Performance Excellence </strong>
+                        </h5>
+                        <p class="card-text">
+
+                            With our robust delivery framework and strong process governance, we advise companies on
+                            best practised business processes along with proactive risk identification & mitigation.
+
+                            </br> </br>
+
+                            We also provide metrics-driven SLA performance tracking to continually align and manage
+                            expectations
+
+
+                        </p>
+
+                    </div>
+                </div>
+
+
+
+
+
+
+
+
+            </div>
+
+
+
+
+        </div>
+
+        <!-- <div class="col">
+        One of three columns
+      </div> -->
+
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>
